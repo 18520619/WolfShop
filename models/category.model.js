@@ -3,7 +3,7 @@ const productModel=require('../models/product.model')
 const categorySchema=new mongoose.Schema(
     {
         name:{type:String,require:true,
-            default:"Giày"},   
+            default:"Dụng Cụ"},   
     },{
         timestamps:true
     }
