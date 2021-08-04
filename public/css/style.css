@@ -1,0 +1,14 @@
+.main {
+  min-height: 81.3vh;
+}
+
+.footer-main {
+  background: #636e72;
+  color: azure;
+  padding: 20px;
+}
+
+.footer-main a {
+  color: azure;
+  text-decoration: none;
+}
