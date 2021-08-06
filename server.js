@@ -7,13 +7,15 @@ const cartRouter=require('./routes/cart')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const mongoose=require('mongoose')
+require('dotenv').config()
 const app=express()
 
 const { connect }=require('mongodb')
 
 const connectFunction=async()=>{
     try {
-        await mongoose.connect("mongodb://localhost/sports",{
+        // "mongodb://localhost/sports"
+        await mongoose.connect(process.env.STR_CONNECT,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
@@ -45,4 +47,4 @@ app.use('/category',categoryRouter)
 app.use('/product',productRouter)
 app.use('/cart',cartRouter)
 app.use('/',indexRouter)
-app.listen(3000)
+app.listen(process.env.PORT||3000)
