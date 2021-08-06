@@ -1,1 +1,23 @@
-Home nha
+<div class="container my-5">
+    <div class="row">
+        <%
+            products.map(pro=>{%>
+                <div class="row-sm-6 col-md-4">
+                    <div class="product-card">
+                        <div class="img">
+                            <img src="<%= pro.imageSrc%>" alt="">
+                        </div>
+        
+                        <div class="content">
+                            <h1><%= pro.name%></h1>
+                            <p><%= pro.info%></p>
+                            <p><%= pro.price%></p>
+                            <a href="/cart/add/<%= pro._id %>" class="btn btn-info">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+            <%})        
+        %>
+      
+    </div>
+</div>

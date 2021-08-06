@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h1>Cart</h1>
+    <table class="table table-dark table-hover ">
+        <tr>
+            <th>Name Products</th>
+            <th>Price Products</th>
+            <th>Image Products</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+            <%
+                cart.map(x=>{%>
+                    <tr>
+                        <td><%= x.item.name%></td>
+                        <td><%= x.item.price %></td>
+                        <td><img src="<%= x.imageSrc %>" height="50px" width="100px" alt=""></td>
+                        <td><a href="#" class="btn btn-warning">Edit</a></td>
+                        <td>
+                            <%- include('../part/deleteForm',{url:`/cart/delete/${x.id}`})%>
+                        </td>
+                     </tr>
+                <%})
+            %>
+            
+      
+        
+       
+    </table>
+  </div>
