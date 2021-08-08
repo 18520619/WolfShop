@@ -52,6 +52,39 @@ router.delete('/delete/:id',async(req,res)=>{
     }
 })
 
+router.get('/increase/:id',(req,res)=>{
+        try {
+            let items_old=[]
+            if(req.session.cart){
+                items_old=req.session.cart.items
+            }
+            const cart = new cartModel(items_old)
+            cart.increase(req.params.id)
+            req.session.cart=cart
+            res.redirect('/cart')
+        } catch (e) {
+            console.log(e)
+            res.redirect('/')
+        }
+})
+
+router.get('/reduce/:id',(req,res)=>{
+    try {
+        let items_old=[]
+        if(req.session.cart){
+            items_old=req.session.cart.items
+        }
+        const cart=new cartModel(items_old)
+        cart.reduce(req.params.id)
+        req.session.cart=cart
+        res.redirect('/cart')
+    } catch (e) {
+        console.log(e)
+        res.redirect('/')
+    }
+    
+
+})
 
 module.exports=router
 
