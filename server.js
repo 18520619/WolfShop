@@ -33,7 +33,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie:  { maxAge: 60*60*1000}
-  })) 
+  }))  //nên để trên
+ 
+  app.use((req,res,next)=>{
+     res.locals.session = req.session;
+     next();
+  })
 console.log('hi')
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended: false, limit:'10mb'}))

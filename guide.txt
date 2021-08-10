@@ -1,0 +1,21 @@
+1. npm init -y  Tạo file json
+2. npm start => chạy chương trình sau mỗi lần thay đổi
+3. npm install --save-dev nodemon => cài đặt nodemon
+4. nodemon server =>chạy chương trình 1 lần duy nhất và sae tự chạy 
+5.   "scripts": {
+    "start":"node server",
+    "startDev":"nodemon server"
+     },
+     *nhan xet:
+     npm run start = "node server" => chay moi lan 
+     npm run startDev = "nodemon server" => chay duy nhat 1 lan
+6.Stop: ctrl + c
+
+7. npm install express + npm install ejs 
+8. npm install mongoose
+9. npm install method-override : ghi đè phương thức
+10. npm install dotenv: cài đặt biến môi trường 
+11. npm i express-ejs-layouts
+12.npm install express-session --save
+
+

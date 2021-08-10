@@ -1,0 +1,28 @@
+--git 
+7. git init
+8. git add .
+9. git checkout -b main
+10. 	git commit -m "Up lan 1"
+11. git remote add origin https://github.com/18520619/baitap.git
+12. git push origin main
+
+-- heroku
+13. npm i -g heroku
+14. heroku login
+   heroku create
+	git remote -v
+15. heroku git:remote -a projectbaitap
+16. git push heroku main
+
+--commit lan 2
+1. git add .
+2. git commit -m "up lan 2"
+3. git remote -v
+4. git push origin main
+5. git push heroku main
+6. thay doi mongodb atlas
+  add ip adress moi: 0.0.0.0/0
+7. trong heroku dashboard: more> restart all dynos
+
+STR_CONNECT=mongodb+srv://thanhduc:duc123@cluster0.ts3kp.mongodb.net/student?retryWrites=true&w=majority
+PORT=3000
