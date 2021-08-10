@@ -21,34 +21,40 @@ $('.addCart').click(function(event){
       })
 })
 
-$('.reduceCart').click(function(event){
+$('.reduceCart').on("submit", function(event){
     event.preventDefault()
-    const href=this.href
-    const id=this.id
+    const action=$(this).attr('action')
+    const id=$(this).data("id")
     const qty2="#qty2"+id
+    const tr_cart_id="#tr_cart_" +id
     // console.log(href) 
     $.ajax({
-        url:href,
-        type:'GET',
+        url:action,
+        type:'PUT',
         data:{},
         success:function(){
             swal ("Good job!", "You have successfully reduced ", "success");
             $("#total1").load(root+"/cart #total2");
             $("#qty"+id).load(root+"/cart "+qty2);
+            $("#numCart1").load(root+"/cart #numCart2");
+            if($(qty2).text()==='1'){
+                $(tr_cart_id).empty();
+            }
         }
     })
 
 })
 
-$('.increaseCart').click(function(event){
+$('.increaseCart').on("submit", function(event){
     event.preventDefault()
-    const href=this.href
-    const id=this.id
+    const action=$(this).attr('action')
+    const id=$(this).data("id")
     const qty2="#qty2"+id
+    const tr_cart_id="#tr_cart_" +id
     // console.log(href) 
     $.ajax({
-        url:href,
-        type:'GET',
+        url:action,
+        type:'PUT',
         data:{},
         success:function(){
             swal ("Good job!", "You have successfully increased ", "success");
@@ -59,7 +65,7 @@ $('.increaseCart').click(function(event){
 
 })
 
-$('.deleteCart').click(function(event){
+$('.deleteCart').on("submit", function(event){
     event.preventDefault()
     const action = $(this).attr('action')
     const href=root+action
@@ -68,13 +74,15 @@ $('.deleteCart').click(function(event){
     
     $.ajax({
         url:href,
-        type:'post',
+        type:'DELETE',
         data:{},
         success:function(){
             console.log("delete ok")
-            $(tr_cart_id).empty();
-            swal("Delete successful!", "continute!", "success");
+            swal("Delete successful!", "You have successfully deleted ", "success");
             $("#total1").load(root+"/cart #total2");
+            $(tr_cart_id).empty();
+            $("#numCart1").load(root+"/cart #numCart2");
+           
             
         }
       })

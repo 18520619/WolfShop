@@ -10,19 +10,24 @@
         </tr>
             <%
                 cart.map(x=>{%>
-                    <tr>
+                    <tr id="tr_cart_<%= x.id%>">
                         <td><%= x.item.name%></td>
                         <td><%= x.item.price %></td>
                         <td><img src="<%= x.imageSrc %>" height="50px" width="100px" alt=""></td>
                         <td>
-                            <form action="/cart?_method=PUT" method="POST">
-                                <a href="/cart/reduce/<%= x.id %>" class="reduceCart btn btn-light" id="<%= x.id %>">-</a>
-                                <span id="qty<%= x.id %>"><span id="qty2<%= x.id %>"><%= x.qty %></span></span>
-                                <a href="/cart/increase/<%= x.id %>" class="increaseCart btn btn-light" id="<%= x.id %>">+</a>
-                            </form>
+                            <div class="editCart">
+                                <form action="/cart/reduce/<%= x.id %>?_method=PUT" data-id="<%= x.id%>" class="reduceCart" method="POST">
+                                    <input type="submit" value="-" class="btn btn-light">
+                                </form>
+                                    <span id="qty<%= x.id %>"><span id="qty2<%= x.id %>"><%= x.qty %></span></span>
+                                <form action="/cart/increase/<%= x.id %>?_method=PUT" data-id="<%= x.id%>" class="increaseCart" method="POST">
+                                    <input type="submit" value="+" class="btn btn-light">
+                                </form>
+                            </div>
+                            
                         </td>
                         <td>
-                            <form class="deleteCart" action="/cart/<%= x.id%>" data-id="<%= x.id%>" method="POST">
+                            <form class="deleteCart" action="/cart/<%= x.id%>?_method=DELETE" data-id="<%= x.id%>" method="POST">
                                 <input type="submit" value="Delete" class=" btn btn-danger" >
                             </form>
                         </td>

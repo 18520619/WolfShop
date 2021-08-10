@@ -36,21 +36,21 @@ router.get('/add/:id',async(req,res)=>{
     }
 })
 
-router.post('/:id',async(req,res)=>{
+router.delete('/:id',async(req,res)=>{
     try {
-        
-       
         const cart=new cartModel(req.session.cart)
         cart.delete(req.params.id)
         req.session.cart=cart
-        res.redirect('/cart')
+        res.send("Delete thành công")
+            // res.redirect('/cart')
     } catch (e) {
+        res.send("Delete thất bại")
         console.log(e.message)
-        res.redirect('/')
+        // res.redirect('/')
     }
 })
 
-router.get('/increase/:id',(req,res)=>{
+router.put('/increase/:id',(req,res)=>{
         try{
             const cart = new cartModel(req.session.cart)
             cart.increase(req.params.id)
@@ -58,12 +58,13 @@ router.get('/increase/:id',(req,res)=>{
             res.send("Increase thành công")
             // res.redirect('/cart')
         } catch (e) {
+            res.send("Increase thất bại")
             console.log(e)
-            res.redirect('/')
+            // res.redirect('/')
         }
 })
 
-router.get('/reduce/:id',(req,res)=>{
+router.put('/reduce/:id',(req,res)=>{
     try {
         const cart=new cartModel(req.session.cart)
         cart.reduce(req.params.id)
@@ -71,8 +72,9 @@ router.get('/reduce/:id',(req,res)=>{
         res.send("Reduce thành công")
         // res.redirect('/cart')
     } catch (e) {
+        res.send("Reduce thất bại")
         console.log(e)
-        res.redirect('/')
+        // res.redirect('/')
     }
     
 
