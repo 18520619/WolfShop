@@ -4,9 +4,11 @@ const indexRouter=require('./routes/index')
 const categoryRouter=require('./routes/category')
 const productRouter=require('./routes/product')
 const cartRouter=require('./routes/cart')
+const userRouter=require('./routes/user')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const mongoose=require('mongoose')
+const flash = require('express-flash')
 require('dotenv').config()
 const app=express()
 
@@ -45,11 +47,12 @@ app.use(express.urlencoded({extended: false, limit:'10mb'}))
 app.set('view engine', 'ejs');
 
 app.use(expressLayouts);
-
+app.use(flash());
 app.set('layout','layouts/layout')
 app.use(express.static('public'))
 app.use('/category',categoryRouter)
 app.use('/product',productRouter)
 app.use('/cart',cartRouter)
 app.use('/',indexRouter)
+app.use('/user',userRouter)
 app.listen(process.env.PORT||3000)
