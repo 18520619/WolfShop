@@ -9,6 +9,8 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const mongoose=require('mongoose')
 const flash = require('express-flash')
+const passport = require('passport')
+require("./models/passport.model")(passport)
 require('dotenv').config()
 const app=express()
 
@@ -30,6 +32,16 @@ const connectFunction=async()=>{
     }
 }
 connectFunction()
+
+app.use(methodOverride('_method'))
+app.use(express.urlencoded({extended: false, limit:'10mb'}))
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.use(flash());
+app.set('layout','layouts/layout')
+app.use(express.static('public'))
+
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -41,18 +53,17 @@ app.use(session({
      res.locals.session = req.session;
      next();
   })
-console.log('hi')
-app.use(methodOverride('_method'))
-app.use(express.urlencoded({extended: false, limit:'10mb'}))
-app.set('view engine', 'ejs');
 
-app.use(expressLayouts);
-app.use(flash());
-app.set('layout','layouts/layout')
-app.use(express.static('public'))
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+
+
+console.log('hi')
+app.use('/',indexRouter)
 app.use('/category',categoryRouter)
 app.use('/product',productRouter)
 app.use('/cart',cartRouter)
-app.use('/',indexRouter)
 app.use('/user',userRouter)
 app.listen(process.env.PORT||3000)

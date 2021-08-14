@@ -2,6 +2,7 @@ const express=require('express')
 const router = express.Router()
 const userModel= require('../models/user.model')
 const bcrypt = require('bcrypt')
+const passport=require('passport')
 
 router.get('/',async(req,res)=>{
     try {
@@ -54,5 +55,43 @@ router.delete('/:id',async(req,res)=>{
 
 })
 
+router.post('/login',passport.authenticate('local',{
+    successRedirect:'/user/profile',
+    failureRedirect:'/user/profile',
+    failureFlash:true
+}))
+
+function check(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect('/user/login')
+}
+
+router.get('/profile',(req,res)=>{
+    let value="No name"
+    if (req.user){
+        value="Name: " +req.user.name
+    }
+    res.render('users/profile', {name:value})
+})
+
+router.get('/logout',(req,res)=>{
+    req.logout()
+    res.redirect('login')
+})
+
+router.get('/github',passport.authenticate("github"))
+router.get('/github/callback', passport.authenticate('github',{
+    successRedirect:'/user/profile',
+    failureRedirect:'/user/profile',
+    failureFlash:true
+}))
+router.get('/google',passport.authenticate('google',{scope:['profile','email']}))
+router.get('/google/callback',passport.authenticate('google',{
+    successRedirect:'/user/profile',
+    failureRedirect:'/user/login',
+    failureFlash:true
+}))
 
 module.exports=router
