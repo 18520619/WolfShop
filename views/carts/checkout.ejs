@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <a href="/" class="btn btn-info mb-5">Return Home </a>
+    <div class="form-group ">
+        <form action="/cart/order" method="POST">
+            <h4>Address</h4>
+            <input type="text" name="address" required class="form-control" placeholder="Enter address">
+
+            <%
+                products.forEach(product => {%>
+                    <div style="color: #333;">
+                        <%= product.item.name %> : (<%= product.qty%>)
+                        <span>---</span>
+                        <%= product.item.price*product.qty %>  
+                    </div>
+                <%});
+            %>
+
+            <div class="total">
+                <h1>Total: <%= total %> </h1>
+                <input type="submit" class="btn btn-info mt-2" name="Order" placeholder="order" value="order" >    
+            </div>
+
+        </form>
+
+        <a href="/cart/pay" class="btn btn-info mt-5">Paypal</a>
+    </div>
+</div>
