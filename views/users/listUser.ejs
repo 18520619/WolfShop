@@ -10,7 +10,7 @@
         <th>Email</th>
         <th>Password</th>
         <th>Level</th>
-        <th>Edit</th>
+        
         <th>Delete</th>
     </tr>
     <%  
@@ -21,7 +21,7 @@
                 <td><%= user.email %></td>
                 <td><%= user.password %></td>
                 <td><%= user.level %></td>
-                <td><a href="/" class="btn btn-warning">Edit</a></td>
+               
                 <td>
                     <%- include('../part/deleteForm',{url:`/user/${user._id}`}) %>    
                 </td>

@@ -3,7 +3,7 @@
     <h1>List Category</h1>
 <table class="table table-dark table-hover t">
     <tr>
-        <th>#</th>
+       
         <th>Name</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -12,7 +12,7 @@
         <%
             categories.map(cate=> {%>
             <tr>
-                <td>#</td>
+              
                 <td><%= cate.name%></td>
                 <td><a class="btn btn-warning" href="/category/edit/<%=cate._id %>">Edit</a></td>
                 <td><%- include('../part/deleteForm',{url:`/category/delete/${cate._id}`}) %></td>   

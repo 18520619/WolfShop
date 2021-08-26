@@ -28,7 +28,8 @@
                                 
                             </td>
                             <td>
-                               <span><%=  x.item.price*x.qty%></span>
+                                
+                               <span><%=Intl.NumberFormat().format( x.item.price*x.qty) %></span>
                             </td>
                          </tr>
                     <%})

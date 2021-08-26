@@ -1,0 +1,26 @@
+
+<div class="container my-5">
+    <h1>Sản phẩm cần tìm</h1>
+    <div class="row">
+        <%
+            products.map(pro=>{%>
+                <div class="row-sm-6 col-md-4  col-lg-3">
+                    <div class="product-card">
+                        <div class="img">
+                            <img src="<%= pro.imageSrc%>" alt="">
+                        </div>
+        
+                        <div class="content">
+                            <h3 class="content-title"><%= pro.name%></h3>
+                            <p><%= pro.info%></p>
+                            <p><%= Intl.NumberFormat().format(pro.price) %> đ</p>
+                            <hr>
+                            <a href="/cart/add/<%= pro._id %>" class="addCart btn btn-info"><i class="fa fa-cart-plus"></i> Shopping cart</a>
+                        </div>
+                    </div>
+                </div>
+            <%})        
+        %>
+      
+    </div>
+</div>

@@ -1,6 +1,7 @@
 const express=require('express')
 const router = express.Router()
 const userModel= require('../models/user.model')
+const orderModel= require('../models/order.model')
 const bcrypt = require('bcrypt')
 const passport=require('passport')
 
@@ -101,4 +102,13 @@ router.get('/google/callback',passport.authenticate('google',{
     failureFlash:true
 }))
 
+router.get('/order', check, async(req, res) => {
+    try {
+        const orders = await orderModel.find()
+        res.render('users/order', {orders: orders})
+    } catch(e) {
+        console.log(e)
+        res.redirect('/')
+    }
+})
 module.exports=router

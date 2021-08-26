@@ -50,10 +50,17 @@
           </div>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/order">Orders</a>
+          </li>
+
         </ul>
-        <form action="/index" method="GET" class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        
+        <form action="/product/search" method="GET" class="d-flex">
+          <input class="form-control me-2" type="text" name="name" placeholder="Search Category" aria-label="Search">
+          <input class="form-control me-2" type="text" name="price" placeholder="Search Price" aria-label="Search">
           <button class="search btn btn-outline-success" type="submit">Search</button>
+          
         </form>
       </div>
     </div>
