@@ -31,10 +31,11 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cart">Carts 
+            <a class="nav-link nav-cart" href="/cart">Carts 
+              <div class="num">
               <span id="numCart1">
                 <span id="numCart2">
-                  (
+                  
               <%
               if(session.cart){%>
                   <%= session.cart.items.length %>
@@ -43,20 +44,48 @@
                   0
               <%}
                %>
-               )
+               
             </span>
             </span>
+          </div>
             </a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form action="/index" method="GET" class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="search btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
   </nav>
+
+ 
+ 
   
-  <section class="banner">
-    
-  </section>
+  
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner banner">
+    <div class="carousel-item active">
+      <img src="../img/banner.jpg" class="d-block w-100" alt="..." height="600px">
+    </div>
+    <div class="carousel-item">
+      <img src="../img/bn-2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../img/bn-222222.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

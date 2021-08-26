@@ -3,17 +3,18 @@
     <div class="row">
         <%
             products.map(pro=>{%>
-                <div class="row-sm-6 col-md-4">
+                <div class="row-sm-6 col-md-4  col-lg-3">
                     <div class="product-card">
                         <div class="img">
                             <img src="<%= pro.imageSrc%>" alt="">
                         </div>
         
                         <div class="content">
-                            <h1><%= pro.name%></h1>
+                            <h3 class="content-title"><%= pro.name%></h3>
                             <p><%= pro.info%></p>
-                            <p><%= pro.price%></p>
-                            <a href="/cart/add/<%= pro._id %>" class="addCart btn btn-info">Add to cart</a>
+                            <p><%= Intl.NumberFormat().format(pro.price) %> đ</p>
+                            <hr>
+                            <a href="/cart/add/<%= pro._id %>" class="addCart btn btn-info"><i class="fa fa-cart-plus"></i> Shopping cart</a>
                         </div>
                     </div>
                 </div>

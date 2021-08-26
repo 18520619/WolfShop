@@ -12,7 +12,7 @@
                 cart.map(x=>{%>
                     <tr id="tr_cart_<%= x.id%>">
                         <td><%= x.item.name%></td>
-                        <td><%= x.item.price %></td>
+                        <td><%= Intl.NumberFormat().format(x.item.price)   %></td>
                         <td><img src="<%= x.imageSrc %>" height="50px" width="100px" alt=""></td>
                         <td>
                             <div class="editCart">
@@ -36,7 +36,7 @@
             %>
     </table>
      
-    <h1>Total: <span id="total1"><span id="total2"><%= total %></span></span> </h1>
+    <h1>Total: <span id="total1"><span id="total2"><%= Intl.NumberFormat().format(total)  %></span></span>đ </h1>
 
-    <a href="/cart/checkout" class="btn btn-info">Checkout</a>
+    <a href="/cart/checkout" class="btn btn-info" style="font-size: 20px; font-weight: 500; color: rgb(43, 28, 28);">Checkout</a>
   </div>

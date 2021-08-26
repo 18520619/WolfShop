@@ -28,8 +28,14 @@ router.post('/',async(req,res)=>{
         const newUser = new userModel({
             name:req.body.name,
             email:req.body.email,
+            level:req.body.level,
             password:hashPassword
         })
+        if(req.body.image !=null && req.body.image!==''){
+            const imageEncode=JSON.parse(req.body.image)
+            newUser.imageType=imageEncode.type
+            newUser.imageData=new Buffer.from(imageEncode.data,'base64')
+        }
         await newUser.save()
         req.flash("success","Insert Successfully")
         res.redirect('/user')
@@ -70,6 +76,7 @@ function check(req, res, next){
 
 router.get('/profile',(req,res)=>{
     let value="No name"
+    
     if (req.user){
         value="Name: " +req.user.name
     }
