@@ -29,7 +29,7 @@ router.post('/',async(req,res)=>{
         const newUser = new userModel({
             name:req.body.name,
             email:req.body.email,
-            level:req.body.level,
+            level=0,
             password:hashPassword
         })
         if(req.body.image !=null && req.body.image!==''){
